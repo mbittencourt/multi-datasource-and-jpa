@@ -1,4 +1,4 @@
-package com.purnima.jain.multidatasource.jpa;
+package br.com.test.multidatasource.jpa;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

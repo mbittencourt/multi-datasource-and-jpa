@@ -1,4 +1,4 @@
-package com.purnima.jain.multidatasource.jpa.postgres.config;
+package br.com.test.multidatasource.jpa.postgres.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "postgresEntityManagerFactory", 
 		transactionManagerRef = "postgresTransactionManager", 
-		basePackages = { "com.purnima.jain.multidatasource.jpa.postgres" })
+		basePackages = { "br.com.test.multidatasource.jpa.postgres" })
 public class PostgresConfig {
 
 	@Bean(name = "postgresDataSource")
@@ -36,7 +36,7 @@ public class PostgresConfig {
 	public LocalContainerEntityManagerFactoryBean postgresEntityManagerFactory(EntityManagerFactoryBuilder builder, @Qualifier("postgresDataSource") DataSource dataSource) {
 		return builder
 				.dataSource(dataSource)
-				.packages("com.purnima.jain.multidatasource.jpa.postgres.entity")
+				.packages("br.com.test.multidatasource.jpa.postgres.entity")
 				.build();
 	}
 
@@ -47,13 +47,8 @@ public class PostgresConfig {
 
 	@Bean
 	public DataSourceInitializer postgresDataSourceInitializer(@Qualifier("postgresDataSource") DataSource postgresDataSource) {
-		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
-		resourceDatabasePopulator.addScript(new ClassPathResource("postgres/schema-postgres.sql"));
-		resourceDatabasePopulator.addScript(new ClassPathResource("postgres/data-postgres.sql"));
-
 		DataSourceInitializer postgresDataSourceInitializer = new DataSourceInitializer();
 		postgresDataSourceInitializer.setDataSource(postgresDataSource);
-		postgresDataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);
 		return postgresDataSourceInitializer;
 	}
 

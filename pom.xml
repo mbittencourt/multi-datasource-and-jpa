@@ -10,7 +10,7 @@
 		<version>2.3.0.RELEASE</version>
 	</parent>
 
-	<groupId>com.purnima.jain</groupId>
+	<groupId>br.com.test.multidatasource</groupId>
 	<artifactId>multi-datasource-and-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>multi-datasource-and-jpa</name>
@@ -47,13 +47,13 @@
 		</dependency>
 		<!-- END: PostgreSQL -->
 
-		<!-- BEGIN: MySQL -->
+		<!-- BEGIN: Oracle -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.version}</version>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>19.3.0.0</version>
 		</dependency>
-		<!-- END: MySQL -->
+		<!-- END: Oracle -->
 
 		<!-- BEGIN: Lombok -->
 		<dependency>
